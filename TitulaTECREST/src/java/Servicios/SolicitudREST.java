@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -32,6 +33,8 @@ public class SolicitudREST {
     private UriInfo context;
     Gson gson;
     SolicitudDAO sdao;
+    Salida salida= new Salida();
+    
     
 
     /**
@@ -47,7 +50,7 @@ public class SolicitudREST {
     public String registrar(String json)
     {
         Solicitud solicitud=gson.fromJson(json, Solicitud.class);
-        Salida salida=sdao.agregar(solicitud);
+        salida=sdao.agregar(solicitud);
         
        return gson.toJson(salida);
     }
@@ -72,5 +75,23 @@ public class SolicitudREST {
         return gson.toJson(objeto);
     }
     
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String eliminarSolicitud(@PathParam("id") int idSolicitud)
+    {
+        salida= sdao.eliminar(idSolicitud);
+        return gson.toJson(salida);
+    }
+    
+    
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String modificarSolicitud(String json)
+    { Solicitud solicitud = gson.fromJson(json, Solicitud.class);
+      salida=sdao.modificar(solicitud);
+      return gson.toJson(salida);
+    }
   
 }

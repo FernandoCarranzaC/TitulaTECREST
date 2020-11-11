@@ -48,11 +48,61 @@ public class SolicitudDAO {
     }
      public Salida modificar(Solicitud solicitud)
     {
-        return null;
+        String sql = "{call sp_modificar_solicitud(?,?,?,?,?,?,?,?,?)}";
+        Salida s= new Salida();
+        try {
+            CallableStatement cs = ConexionDB.getInstance().getConnection().prepareCall(sql);
+            cs.setInt(1,solicitud.getIdSolicitud());
+            cs.setString(2, solicitud.getFechaAtencion());
+            cs.setString(3, solicitud.getTituloProyecto());
+            cs.setString(4, solicitud.getEstatus());
+            cs.setInt(5, solicitud.getOpcion().getIdOpcion());
+            cs.setInt(6,solicitud.getAdministrativo().getIdAdministrativo());
+            cs.setString(7,solicitud.getTipoUsuario());
+            cs.registerOutParameter(8, Types.VARCHAR);
+            cs.registerOutParameter(9, Types.VARCHAR);
+            cs.execute();
+            s.setEstatus(cs.getString(8));
+            s.setEstatus(cs.getString(9));
+            cs.close();
+            ConexionDB.getInstance().cerrar();
+            
+            
+            
+       } catch (SQLException ex) {
+               System.out.println("Error al ejecutar "+sql+", "+ex.getMessage());
+            s.setEstatus("Error:");
+            s.setMensaje("Error al ejecutar "+sql);
+         
+        }
+              
+        return s; 
     }
+     
+     
       public Salida eliminar(int idSolicitud)
     {
-        return null; 
+        String sql= "{call sp_eliminar_solicitud(?,?,?)}";
+        Salida s=new Salida();  
+        try {
+            CallableStatement cs=ConexionDB.getInstance().getConnection().prepareCall(sql);
+            cs.setInt(1, idSolicitud);
+            cs.registerOutParameter(2, Types.VARCHAR);
+            cs.registerOutParameter(3, Types.VARCHAR);
+            cs.execute();
+            s.setEstatus(cs.getString(2));
+            s.setMensaje(cs.getString(3));  
+            cs.close();
+            ConexionDB.getInstance().cerrar();
+            
+        } catch (SQLException ex) {
+               System.out.println("Error al ejecutar "+sql+", "+ex.getMessage());
+            s.setEstatus("Error:");
+            s.setMensaje("Error al ejecutar "+sql);
+         
+        }
+              
+        return s; 
     }
        public Object consultaGeneral( )
     {
