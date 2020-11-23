@@ -34,8 +34,6 @@ public class SolicitudREST {
     Gson gson;
     SolicitudDAO sdao;
     Salida salida= new Salida();
-    
-    
 
     /**
      * Creates a new instance of SolicitudREST

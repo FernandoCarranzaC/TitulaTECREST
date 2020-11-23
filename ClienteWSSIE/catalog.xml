@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8090/WSSIE/SIEService?WSDL" uri="xml-resources/web-service-references/SIEService/wsdl/localhost_8090/WSSIE/SIEService.wsdl"/>
+    <system systemId="http://localhost:8090/WSSIE/SIEService?xsd=1" uri="xml-resources/web-service-references/SIEService/wsdl/localhost_8090/WSSIE/SIEService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8090/WSSIE/SaludarService?WSDL" uri="xml-resources/web-service-references/SaludarService/wsdl/localhost_8090/WSSIE/SaludarService.wsdl"/>
+    <system systemId="http://localhost:8090/WSSIE/SaludarService?xsd=1" uri="xml-resources/web-service-references/SaludarService/wsdl/localhost_8090/WSSIE/SaludarService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8090/WSSIE/SaludarService?xsd=2" uri="xml-resources/web-service-references/SaludarService/wsdl/localhost_8090/WSSIE/SaludarService.xsd_2.xsd"/>
+</catalog>

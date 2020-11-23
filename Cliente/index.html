@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <script src="venta.js"></script>
+</head>
+<a href="javascript:nuevo()"><img src="./img/add.gif">Nueva venta</a>
+<a href="javascript:mostrarDivAlumno()">Consultar Cliente</a>
+    <body onload="inicializarDivs()">
+        <div id="listadoGeneral">
+            <table id="datos" border="1">
+                <thead>
+                    <th>IDVenta</th>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Servicios</th>
+                    <th>Pendientes</th>
+                    <th>Impuesto</th>
+                    <th>Precio Neto</th>
+                    <th>Total</th>
+                    <th>Metodo Pago</th>
+                    <th>Fecha</th>
+                    <th>Vendedor</th>
+                    <th>idCarrera</th>
+                    <th>Carrera</th>
+                    <th colspan="2">Operaciones</th>
+                </thead>
+            </table>
+        </div>
+        <div id="listadoIndividual">
+            <div id="titulo">
+                <fieldset>
+                    <legend>Datos de la Solicitud</legend>
+                    <div id="folio">
+                        <label>Folio:</label>
+                        <input type="number" id="idSolicitud" readonly>
+                        <br>
+                    </div>
+                    <label>Titulo del Proyecto:</label>
+                    <input type="text" id="tituloProyecto">
+                    <br>
+                    <label>Opción:</label>
+                    <select id="opcion">
+                        <option>--Elige Opcion</option>
+                    </select>
+                    <br>
+                    <div id="complemento">
+                        <label>Fecha Registro:</label>
+                        <input type="date" id="fechaRegistro" readonly>
+                        <br>
+                        <label>Fecha Atención:</label>
+                        <input type="date" id="fechaAtencion" readonly>
+                        <br>
+                        <label>Estatus:</label>
+                        <input type="text" id="estatus" readonly>;
+                        <br>
+                    </div>
+                </fieldset>
+                <div id="datosAlumno">
+                <fieldset>
+                    <legend>Datos del Alumno</legend>
+                    <label>ID</label>
+                    <input type="number" id="idAlumno">
+                    <br>
+                    <label>Nombre:</label>
+                    <input type="text" id="nombreAlumno" readonly>
+                    <br>
+                    <label>No.Control:</label>
+                    <input type="text" id="nocontrol" readonly>
+                    <button onclick="consultarAlumno()">Buscar</button>
+                    <br>
+                    <label>IDCarrera</label>
+                    <input type="number" id="idCarrera" readonly>
+                    <br>
+                    <label>Carrera:</label>
+                    <input type="text" id="nombreCarrera" readonly>
+                    <br>
+                </fieldset>
+                </div>
+                <fieldset id="coordinador">
+                    <legend>Datos del Coordinador</legend>
+                    <label>ID</label>
+                    <input type="number" id="idAdministrativo" readonly>
+                    <br>
+                    <label>Nombre:</label>
+                    <input type="text" id="nombreAdministrativo" readonly>
+                    <br>
+                </fieldset>
+                <button onclick="guardar()">Guardar</button>
+                <button onclick="cancelar()">Cancelar</button>
+            </div>
+        </div>
+    </body>
+</html>
